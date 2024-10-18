@@ -15,3 +15,9 @@ def get_solution_array(matrix: np.ndarray[np.ndarray]) -> np.ndarray[np.ndarray]
     for i in range(n):
         solution_array[i] = matrix[i][n]
     return solution_array
+
+
+def prettier_result(result_array: np.ndarray) -> list[list[int]]:
+    n = int(len(result_array) ** (1 / 2))
+    pretty_result = result_array.reshape(n, n)
+    return pretty_result
