@@ -1,6 +1,6 @@
 import pygame
 from game.button import Button
-from game.colors import BLACK
+from game.colors import BLACK, WHITE
 from game.grid import Grid
 from lights_out import lights_out_solver
 from matrix_generator import random_matrix_generator
@@ -10,7 +10,7 @@ pygame.init()
 
 # Constants
 SCREEN_WIDTH, SCREEN_HEIGHT = 600, 700
-GRID_SIZE = 10  # Adjust this for different grid sizes
+GRID_SIZE = 10
 CELL_SIZE = SCREEN_WIDTH // GRID_SIZE
 BUTTON_HEIGHT = 80
 PADDING = 10
@@ -19,7 +19,7 @@ PADDING = 10
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Lights Out")
 font = pygame.font.Font(None, 100)
-win_text = font.render("You Win!", True, (255, 255, 255))  # White color
+win_text = font.render("You Win!", True, WHITE)
 win_text_rect = win_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
 
 
@@ -58,13 +58,13 @@ class Game:
     def run(self):
         """Main game loop."""
 
-        while self.running or not self.win:
+        while self.running:
             self.draw()
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.running = False
-                elif event.type == pygame.MOUSEBUTTONDOWN:
+                elif event.type == pygame.MOUSEBUTTONDOWN and not self.win:
                     self.handle_click(event.pos)
                     if not self.grid.grid.sum():
                         self.win = True
@@ -72,7 +72,6 @@ class Game:
             if self.win:
                 screen.blit(win_text, win_text_rect)
             pygame.display.flip()
-        
         pygame.quit()
 
 
