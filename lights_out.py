@@ -14,7 +14,7 @@ def lights_out_solver(matrix: np.ndarray[np.ndarray]) -> np.ndarray:
     """
     # Turn the matrix into an array-like, as it will be the last column of the matrix to solve
     matrix_2_array = matrix.reshape(-1)
-    # Generate the matrix that represents by what each light is affected
+    # Generate a matrix of (n^2)*(n^2), each row per light in the previous matrix
     neighbors_matrix = get_neighbors_matrix(len(matrix))
     # Concatenate the array of the given matrix to the light-affecting matrix
     matrix_to_solve = np.hstack([neighbors_matrix, matrix_2_array.reshape(-1, 1)])

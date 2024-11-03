@@ -1,4 +1,3 @@
-import numpy as np
 import pygame
 
 from game.colors import DARK_GREEN, GRAY, WHITE
@@ -10,7 +9,7 @@ class Grid:
         self.cell_size = cell_size
         self.padding = padding
         self.grid = matrix
-        self.solution = solution.reshape(10, 10)
+        self.solution = solution.reshape(len(matrix), len(matrix))
 
     def draw(self, surface):
         """Draws the grid with colors based on cell values."""

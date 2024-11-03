@@ -35,13 +35,13 @@ def binary_gaussian_elimination(
 
 
 def get_neighbors_matrix(n: int) -> np.ndarray:
-    """Generates an NxN matrix, with 1's in the position that affects each light (row).
+    """Generates an (N^2)x(N^2) matrix, with 1's in the position that affects each light (row).
 
     Args:
         n (int): Length of the matrix.
 
     Returns:
-        np.ndarray: NxN matrix.
+        np.ndarray: (N^2)x(N^2) matrix.
     """
     matrix = []
     # For each light, will make it's own array, with 1's in the position of the lights that
