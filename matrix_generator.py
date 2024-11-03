@@ -13,11 +13,11 @@ def random_matrix_generator(n: int) -> np.ndarray[np.ndarray]:
         np.ndarray[np.ndarray]: Matrix composed of 0's and 1's
     """
     matrix = np.zeros((n, n), dtype=int)
-    amount_lights_on = randint(1, n)
+    amount_lights_on = randint((n**2) // 8, n**2)
     lights_coordinates = set()
     while len(lights_coordinates) < amount_lights_on:
         coord = (randint(0, n - 1), randint(0, n - 1))
         if coord not in lights_coordinates:
             matrix[coord[0], coord[1]] = 1
-        lights_coordinates.add(coord)
+            lights_coordinates.add(coord)
     return matrix
